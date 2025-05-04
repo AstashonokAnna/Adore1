@@ -1,0 +1,336 @@
+// Variables
+$primary-color: #ff6b81;
+$secondary-color: #2f3542;
+$text-color: #333;
+$light-color: #f5f6fa;
+$dark-color: #2f3542;
+$transition: all 0.3s ease;
+
+// Mixins
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+// Base styles
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  color: $text-color;
+  line-height: 1.6;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 12px 30px;
+  background-color: $primary-color;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: $transition;
+
+  &:hover {
+    background-color: darken($primary-color, 10%);
+    transform: translateY(-3px);
+  }
+}
+
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 36px;
+  margin-bottom: 50px;
+  text-align: center;
+  position: relative;
+
+  &::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 3px;
+    background-color: $primary-color;
+    margin: 15px auto 0;
+  }
+}
+
+// Header styles
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px 0;
+  background-color: white;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+.header__inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: $primary-color;
+}
+
+.nav {
+  display: flex;
+
+  &__link {
+    margin: 0 15px;
+    color: $dark-color;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: $primary-color;
+    }
+  }
+}
+
+// Hero section
+.hero {
+  height: 100vh;
+  min-height: 700px;
+  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('photo_2025-04-03_22-00-46.jpg') no-repeat center/cover;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(255, 107, 129, 0.2) 0%, rgba(232, 67, 147, 0.2) 100%);
+    z-index: 0;
+  }
+
+  &__content {
+    position: relative;
+    z-index: 1;
+    max-width: 800px;
+    padding: 0 20px;
+  }
+
+  &__title {
+    font-family: 'Dancing Script', cursive;
+    font-size: 72px;
+    margin-bottom: 20px;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  }
+
+  &__subtitle {
+    font-size: 22px;
+    margin-bottom: 40px;
+    font-weight: 300;
+    letter-spacing: 1px;
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+}
+
+// Gallery section
+.gallery {
+  background-color: $light-color;
+  padding: 100px 0;
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background: linear-gradient(to bottom, white, rgba(255, 255, 255, 0));
+    z-index: 1;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    margin: 50px 0;
+    position: relative;
+    z-index: 2;
+  }
+
+  &__item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    aspect-ratio: 1 / 1;
+    transition: $transition;
+
+    &:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+    }
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s ease;
+
+    .gallery__item:hover & {
+      transform: scale(1.1);
+    }
+  }
+
+  &__caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+    color: white;
+    opacity: 0;
+    transition: $transition;
+    transform: translateY(20px);
+
+    .gallery__item:hover & {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+.section-subtitle {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 50px;
+  color: #5e676e;
+  font-size: 18px;
+}
+
+// Media queries
+@media (max-width: 992px) {
+  .about__inner {
+    flex-direction: column;
+  }
+
+  .about__image {
+    padding-right: 0;
+    margin-bottom: 30px;
+  }
+
+  .contacts__inner {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav {
+    display: none;
+    position: fixed;
+    top: 80px;
+    left: 0;
+    width: 100%;
+    background-color: white;
+    flex-direction: column;
+    padding: 20px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+
+    &.active {
+      display: flex;
+    }
+
+    &__link {
+      margin: 10px 0;
+    }
+  }
+
+  .burger {
+    display: block;
+
+    &.active {
+      span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+      }
+
+      span:nth-child(2) {
+        opacity: 0;
+      }
+
+      span:nth-child(3) {
+        transform: rotate(-45deg) translate(7px, -6px);
+      }
+    }
+  }
+
+  .hero__title {
+    font-size: 40px;
+  }
+
+  .hero__text {
+    font-size: 16px;
+  }
+
+  .section-title {
+    font-size: 30px;
+  }
+
+  .review {
+    min-width: 280px;
+  }
+
+  .slider-arrow {
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
+
+    &.prev {
+      left: -15px;
+    }
+
+    &.next {
+      right: -15px;
+    }
+  }
+
+  .gallery__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .gallery__grid {
+    grid-template-columns: 1fr;
+  }
+}

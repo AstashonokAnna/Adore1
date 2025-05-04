@@ -1,0 +1,206 @@
+:root {
+    --primary-color: #6d5d6e;
+    --secondary-color: #393646;
+    --text-color: #f4eee0;
+    --light-color: #f4eee0;
+    --accent-color: #c06c84;
+    --dark-accent: #6c5b7b;
+    --gradient: linear-gradient(135deg, var(--accent-color), var(--dark-accent));
+  }
+  
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  .catalog {
+    padding: 120px 0;
+    background-color: var(--secondary-color);
+    min-height: 100vh;
+  }
+  
+  .catalog .container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  
+  .catalog .section-title {
+    color: var(--light-color);
+    font-size: 3rem;
+    text-align: center;
+    margin-bottom: 50px;
+    position: relative;
+    display: inline-block;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .catalog__filter {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 50px;
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+  
+  .filter-btn {
+    padding: 12px 28px;
+    background: none;
+    border: 2px solid var(--primary-color);
+    border-radius: 50px;
+    color: var(--light-color);
+    cursor: pointer;
+    transition: all 0.4s;
+    font-weight: 500;
+    font-size: 16px;
+    background-color: rgba(57, 54, 70, 0.5);
+  }
+  
+  .filter-btn.active,
+  .filter-btn:hover {
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(192, 108, 132, 0.4);
+    border-color: transparent;
+    background: var(--gradient);
+  }
+  
+  .product-card {
+    background-color: rgba(244, 238, 224, 0.1);
+    border-radius: 20px;
+    overflow: hidden;
+    transition: all 0.5s;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .product-card:hover {
+    box-shadow: 0 15px 40px rgba(192, 108, 132, 0.3);
+    transform: translateY(-10px);
+    background-color: rgba(244, 238, 224, 0.15);
+  }
+  
+  .product-card__badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: var(--gradient);
+    color: white;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    z-index: 2;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  .product-card__image {
+    height: 320px;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .product-card__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s ease;
+  }
+  
+  .product-card:hover .product-card__image img {
+    transform: scale(1.1);
+  }
+  
+  .product-card__content {
+    padding: 25px;
+    background: linear-gradient(to bottom, transparent, rgba(57, 54, 70, 0.3));
+  }
+  
+  .product-card__title {
+    font-size: 20px;
+    margin-bottom: 12px;
+    color: var(--light-color);
+    font-weight: 600;
+  }
+  
+  .product-card__description {
+    color: rgba(244, 238, 224, 0.8);
+    font-size: 15px;
+    margin-bottom: 20px;
+    line-height: 1.6;
+  }
+  
+  .product-card__price {
+    font-weight: 700;
+    color: var(--light-color);
+    font-size: 24px;
+    margin-bottom: 15px;
+  }
+  
+  .product-card__price-options {
+    font-size: 14px;
+    color: rgba(244, 238, 224, 0.7);
+    margin-top: 8px;
+    line-height: 1.5;
+  }
+  
+  .product-card__btn {
+    width: 100%;
+    background: var(--gradient);
+    border: none;
+    color: white;
+    padding: 14px;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-top: 15px;
+    font-size: 14px;
+    box-shadow: 0 4px 15px rgba(192, 108, 132, 0.3);
+  }
+  
+  .product-card__btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(192, 108, 132, 0.5);
+  }
+  
+  @media (max-width: 1024px) {
+    .catalog__items {
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)) !important;
+      gap: 25px !important;
+    }
+    
+    .product-card__image {
+      height: 280px !important;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .catalog {
+      padding: 80px 0;
+    }
+    
+    .catalog .section-title {
+      font-size: 2.5rem;
+      margin-bottom: 40px;
+    }
+    
+    .filter-btn {
+      padding: 10px 20px;
+      font-size: 14px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .catalog .section-title {
+      font-size: 2rem;
+    }
+    
+    .catalog__items {
+      grid-template-columns: 1fr !important;
+      gap: 20px !important;
+    }
+  }
