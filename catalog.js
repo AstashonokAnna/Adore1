@@ -121,12 +121,17 @@ function renderProducts(category = 'all') {
         `;
         
         card.querySelector('.product-card__btn').addEventListener('click', function() {
+            // Сохраняем выбранный товар в localStorage
+            localStorage.setItem('selectedProduct', JSON.stringify(product));
+            
+            // Изменяем вид кнопки на короткое время
             this.textContent = 'Добавлено ✓';
             this.style.backgroundColor = '#4CAF50';
+            
+            // Перенаправляем на страницу заказа после небольшой задержки
             setTimeout(() => {
-                this.textContent = 'В корзину';
-                this.style.backgroundColor = '';
-            }, 2000);
+                window.location.href = 'order.html';
+            }, 500);
         });
         
         catalogItems.appendChild(card);
